@@ -1,20 +1,25 @@
 name: Deploy to GitHub Pages
 
 on:
+  # Запускается при отправке изменений в ветку `main`
   push:
     branches: [main]
+  # Позволяет запускать этот воркфлоу вручную со страницы Actions
   workflow_dispatch:
 
+# Устанавливаем права для GITHUB_TOKEN, чтобы разрешить развертывание на GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Разрешаем только одно одновременное развертывание, отменяя предыдущие запуски
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
+  # Задача сборки
   build:
     runs-on: ubuntu-latest
     steps:
@@ -25,6 +30,8 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+      - name: Update npm
+        run: npm install -g npm@latest
       - name: Clean npm cache
         run: npm cache clean --force
       - name: Install dependencies
@@ -36,9 +43,12 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # Загружать из папки 'dist', которую создает Vite
           path: './dist'
   
+  # Задача развертывания
   deploy:
+    # Требуется, чтобы задача 'build' была успешно завершена
     needs: build
     environment:
       name: github-pages
