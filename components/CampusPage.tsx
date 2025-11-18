@@ -100,10 +100,10 @@ const TestingSection = () => (
 
 const StudentStoriesSection = () => {
     const students = [
-        { name: 'Владимир, 21 год', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop' },
-        { name: 'Максим, 21 год', img: 'https://images.unsplash.com/photo-1542327897-4141c5326240?q=80&w=1887&auto=format&fit=crop' },
+        { name: 'Владимир, 21 год', img: 'https://i.postimg.cc/HWcvGMpm/i_(5).webp' },
+        { name: 'Максим, 21 год', img: 'https://i.postimg.cc/PfpVGDdR/i_(6).webp' },
         { name: 'Матвей, 21 год', img: 'https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=1887&auto=format&fit=crop' },
-        { name: 'Игорь, 21 год', img: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?q=80&w=2070&auto=format&fit=crop' },
+        { name: 'Игорь, 21 год', img: 'https://i.postimg.cc/1Rn7xF9P/scale_1200.jpg' },
     ];
     return (
         <section className="py-16 md:py-24 text-center">
